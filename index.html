@@ -2,7 +2,7 @@
 <title>Dreamer 本地图像服务</title>
 <style>body{font:15px/1.7 system-ui;background:#151519;color:#ececf3;max-width:840px;margin:48px auto;padding:0 24px}h1{font-size:27px}section{background:#23232b;padding:24px;border-radius:16px;margin:20px 0}button,a{color:inherit}button{background:#5550bd;border:0;padding:10px 18px;border-radius:8px;cursor:pointer;margin-right:10px}button:disabled{opacity:.5}a{color:#c1baff}small{color:#b5b4c2}#status{white-space:pre-wrap}li{padding:10px 0}code{word-break:break-all}</style>
 <h1>Dreamer 本地图像服务</h1><p>Qwen-Image-2.1 · NVIDIA GPU</p>
-<section><strong>连接地址</strong><p><code id="address"></code></p><p>在 Dreamer 中保存此地址，再在最终确认卡片选择「Qwen 本地」。</p><div id="status">正在读取状态…</div><p><button id="load">加载模型</button><button id="unload">卸载模型</button><a href="/docs">API 文档</a></p><small>首次加载会下载模型权重。加载和生成可以耗时较长；低显存模式还需要足够的系统内存与磁盘空间。</small></section>
+<section><strong>连接地址</strong><p><code id="address"></code></p><p>Dreamer 默认使用此地址，无需填写连接信息。在最终确认卡片选择「Qwen 本地」即可。</p><div id="status">正在读取状态…</div><p><button id="load">加载模型</button><button id="unload">卸载模型</button><a href="/docs">API 文档</a></p><small>首次加载会下载模型权重。加载和生成可以耗时较长；低显存模式还需要足够的系统内存与磁盘空间。</small></section>
 <section><strong>最近任务</strong><ul id="tasks"></ul></section>
 <script>
 document.getElementById('address').textContent=location.origin;
