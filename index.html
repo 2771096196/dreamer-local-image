@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dreamer 本地图像服务</title>
+<style>body{font:15px/1.7 system-ui;background:#151519;color:#ececf3;max-width:840px;margin:48px auto;padding:0 24px}h1{font-size:27px}section{background:#23232b;padding:24px;border-radius:16px;margin:20px 0}button,a{color:inherit}button{background:#5550bd;border:0;padding:10px 18px;border-radius:8px;cursor:pointer;margin-right:10px}button:disabled{opacity:.5}a{color:#c1baff}small{color:#b5b4c2}#status{white-space:pre-wrap}li{padding:10px 0}code{word-break:break-all}</style>
+<h1>Dreamer 本地图像服务</h1><p>Qwen-Image-2.1 · NVIDIA GPU</p>
+<section><strong>连接地址</strong><p><code id="address"></code></p><p>在 Dreamer 中保存此地址，再在最终确认卡片选择「Qwen 本地」。</p><div id="status">正在读取状态…</div><p><button id="load">加载模型</button><button id="unload">卸载模型</button><a href="/docs">API 文档</a></p><small>首次加载会下载模型权重。加载和生成可以耗时较长；低显存模式还需要足够的系统内存与磁盘空间。</small></section>
+<section><strong>最近任务</strong><ul id="tasks"></ul></section>
+<script>
+document.getElementById('address').textContent=location.origin;
+const names={unloaded:'未加载',loading:'加载中',ready:'模型就绪',error:'加载失败',queued:'排队中',running:'生成中',succeeded:'已完成',failed:'失败',cancelled:'已取消'};
+async function api(path,method){const r=await fetch(path,{method:method||'GET'});const data=await r.json();if(!r.ok)throw new Error(JSON.stringify(data.detail||data));return data;}
+async function refresh(){try{const h=await api('/health');document.getElementById('status').textContent=(names[h.state]||h.state)+' · 显存模式 '+h.offload+(h.gpu?'\n'+h.gpu+' · 可用显存 '+h.free_vram_mb+' MB':'')+(h.error?'\n'+h.error:'');const list=await api('/v1/tasks');const el=document.getElementById('tasks');el.replaceChildren();for(const t of list.data){const li=document.createElement('li');li.textContent=t.id.slice(0,8)+' · '+(names[t.status]||t.status)+' · '+Math.round(t.progress*100)+'%'+(t.error?' · '+t.error:'');if(!['succeeded','failed','cancelled'].includes(t.status)){const b=document.createElement('button');b.textContent='取消';b.onclick=()=>api('/v1/tasks/'+t.id,'DELETE').then(refresh).catch(e=>alert(e.message));li.append(' ',b);}for(const image of t.images||[]){const a=document.createElement('a');a.href=image.url;a.textContent=' 查看图片';a.target='_blank';li.append(a);}el.append(li);}}catch(e){document.getElementById('status').textContent=e.message;}}
+for(const action of ['load','unload'])document.getElementById(action).onclick=async()=>{try{await api('/v1/model/'+action,'POST');await refresh();}catch(e){alert(e.message);}};
+refresh();setInterval(refresh,3000);
+</script></html>

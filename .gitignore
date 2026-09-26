@@ -1,0 +1,15 @@
+runtime/
+models/
+data/
+settings.json
+__pycache__/
+.pytest_cache/
+dist/
+.venv/
+.download-venv/
+.tools/
+.env
+.env.*
+*.log
+validation-output/
+*.egg-info/

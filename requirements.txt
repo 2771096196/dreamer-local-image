@@ -1,0 +1,14 @@
+fastapi==0.135.1
+starlette==1.7.0
+pydantic==2.13.5
+uvicorn==0.41.0
+pillow==12.1.1
+accelerate==1.15.0
+transformers==5.17.0
+diffusers @ https://github.com/huggingface/diffusers/archive/e0abab83b5df05de9e7abd788643c1a7c1e42e28.zip#sha256=bb44ae1cb3b11405d44b24a88f31ea8eef7fb72bd7c3ce5a7fceadf08ada558b
+safetensors==0.8.0
+sentencepiece==0.2.2
+huggingface_hub==1.33.0
+filelock==3.32.3
+numpy==2.5.2
+-r requirements-quant.txt

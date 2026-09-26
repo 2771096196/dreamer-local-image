@@ -1,0 +1,185 @@
+{
+  "date": "2026-09-26",
+  "gpu": "NVIDIA GeForce RTX 3060 12GB",
+  "profile": {
+    "quantization": "nf4",
+    "offload": "model",
+    "vae_tile_size": 1024
+  },
+  "model_revision": "790c92633540aa0cb11d9abf19eb46d861714758",
+  "checks": {
+    "same_seed_identical": true,
+    "transparent_alpha_verified": true,
+    "real_idempotency_verified": true,
+    "mask_preserves_outside": true
+  },
+  "cancellation": "cancelled",
+  "cases": [
+    {
+      "name": "text-to-image",
+      "status": "succeeded",
+      "seconds": 146.27,
+      "size": [
+        1024,
+        1024
+      ],
+      "steps": 40,
+      "images": 1,
+      "peak_allocated_mib": 7399,
+      "sha256": [
+        "e8175e1962d9557284f805d4735fe085100b7a83cb0abc4ab13debf2a6199652"
+      ]
+    },
+    {
+      "name": "image-edit",
+      "status": "succeeded",
+      "seconds": 18.08,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 12,
+      "images": 1,
+      "peak_allocated_mib": 7287,
+      "sha256": [
+        "6174026535296777c39f8c8ffc55427340c249561b19fa1a2d025ede7365a40d"
+      ]
+    },
+    {
+      "name": "multi-reference",
+      "status": "succeeded",
+      "seconds": 18.05,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 12,
+      "images": 1,
+      "peak_allocated_mib": 7289,
+      "sha256": [
+        "8241d3f52f1880e803e5346d04e0db5341fb8e8d755b738e3ccd835586eeecca"
+      ]
+    },
+    {
+      "name": "transparent",
+      "status": "succeeded",
+      "seconds": 14.06,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 12,
+      "images": 1,
+      "peak_allocated_mib": 6139,
+      "sha256": [
+        "4d5715f62992000d52d435c1063678a4986496ed187cb4ec64ed26e052db73da"
+      ]
+    },
+    {
+      "name": "mask-edit",
+      "status": "succeeded",
+      "seconds": 18.06,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 12,
+      "images": 1,
+      "peak_allocated_mib": 7291,
+      "sha256": [
+        "301e590d1127a70265802c2d6e06b39e36e4cb767d87924bfe695daf7553874d"
+      ]
+    },
+    {
+      "name": "batch",
+      "status": "succeeded",
+      "seconds": 28.08,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 12,
+      "images": 2,
+      "peak_allocated_mib": 6126,
+      "sha256": [
+        "e2575803fbbe59d867bc0e5974d4cd6f6e667bbf5fbd45a7244c0a63648503d2",
+        "7fc7270086c367448e377a582dbd77a88e40365f0ef41758b472b4e210797a61"
+      ]
+    },
+    {
+      "name": "seed-a",
+      "status": "succeeded",
+      "seconds": 8.06,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 4,
+      "images": 1,
+      "peak_allocated_mib": 6125,
+      "sha256": [
+        "3220b0bcd9192777ccbbc070831a463f2fb2a25df5c7f8aba785c49452e11f4f"
+      ]
+    },
+    {
+      "name": "seed-b",
+      "status": "succeeded",
+      "seconds": 8.08,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 4,
+      "images": 1,
+      "peak_allocated_mib": 6125,
+      "sha256": [
+        "3220b0bcd9192777ccbbc070831a463f2fb2a25df5c7f8aba785c49452e11f4f"
+      ]
+    },
+    {
+      "name": "negative-and-no-cache",
+      "status": "succeeded",
+      "seconds": 12.03,
+      "size": [
+        512,
+        512
+      ],
+      "steps": 4,
+      "images": 1,
+      "peak_allocated_mib": 6125,
+      "sha256": [
+        "d9278fdacb1a021bd8321540cfd1837639dd40aa97a40b9a1a1167c0e905a3dd"
+      ]
+    },
+    {
+      "name": "ten-references",
+      "status": "succeeded",
+      "seconds": 8.08,
+      "size": [
+        256,
+        256
+      ],
+      "steps": 2,
+      "images": 1,
+      "peak_allocated_mib": 6894,
+      "sha256": [
+        "c6b34d55e08b6c472d8b76ecf9134e98ea2db48383660d3a4b5030643791e541"
+      ]
+    },
+    {
+      "name": "2k-memory-smoke",
+      "status": "succeeded",
+      "seconds": 34.12,
+      "size": [
+        2048,
+        2048
+      ],
+      "steps": 1,
+      "images": 1,
+      "peak_allocated_mib": 7440,
+      "sha256": [
+        "4577c7f722a16789a37d9e5395b0df8b2c75182fa6db5c15ca21a7daf17bbbe1"
+      ]
+    }
+  ]
+}
